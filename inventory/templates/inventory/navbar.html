@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Delights</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #2ecc71; /* Natural green color */
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow */
+        }
+
+        nav a {
+            display: inline-block;
+            color: #ffffff;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #27ae60; /* Darker green for highlight on hover */
+            color: #ffffff; /* Text color on hover */
+        }
+
+        nav a.active {
+            background-color: #27ae60; /* Active button color */
+            color: #ffffff; /* Active text color */
+        }
+
+        @media screen and (max-width: 600px) {
+            nav a {
+                display: block;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="{% url 'home' %}" {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %}>Home</a>
+        <a href="#" {% if request.resolver_match.url_name == 'menu' %}class="active"{% endif %}>Menu</a>
+        <a href="#" {% if request.resolver_match.url_name == 'recipe_list' %}class="active"{% endif %}>Recipes</a>
+        <a href="#">Sale</a>
+        <a href="#">Reports</a>
+    </nav>
+
+    <!-- Your content goes here -->
+
+</body>
+</html>

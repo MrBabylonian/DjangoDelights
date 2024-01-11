@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <meta charset="UTF-8">
+<head>
+    <title>Django Delights</title>
+    <link rel="stylesheet" type="text/css" href="inventory/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'inventory/css/navbar.css' %}">
+    <h1 align="center">Welcome to Inventory & Sales Management</h1>
+</head>
+<body>
+    {% include 'inventory/navbar.html' %}
+    {% block content%}
+    {% endblock %}
+</body>
+</html> 

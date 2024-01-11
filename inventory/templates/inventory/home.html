@@ -1,0 +1,102 @@
+{% extends "inventory/base.html" %}
+{% load static %}
+
+{% block content %}
+    <style>
+        /* Common styling for containers */
+        .container {
+            width: 45%;
+            padding: 40px;
+            border: 0px solid #ddd;
+        }
+
+        /* Menu Container styling */
+        .menu-container, .ingredient-container {
+            margin: 0px 0;
+            float: left;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 5px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #27ae60;
+            color: #fff;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            padding: 8px;
+            background-color: #27ae60;
+            color: #fff;
+        }
+
+        /* Clear both containers */
+        .clear {
+            clear: both;
+        }
+    </style>
+
+    <!-- Container div for the menu table -->
+    <div class="menu-container container">
+        <h2>Menu Items</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in menu %}
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.full_price }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Container div for the ingredient list -->
+    <div class="ingredient-container container">
+        <h2>Ingredients</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Stock</th>
+                    <th>Price per Unit</th> 
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in ingredient %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.stock_unit }}</td>
+                        <td>{{ product.full_price }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Clear both containers -->
+    <div class="clear"></div>
+{% endblock %}
