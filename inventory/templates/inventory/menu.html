@@ -1,0 +1,54 @@
+{% extends "inventory/base.html" %}
+{% load static %}
+{% block content %}
+<h2 align="center">Menu Items</h2>
+<style>
+    /* Container styling */
+    .menu-container {
+        width: 45%;
+        margin: 20px auto;
+        padding: 0px;
+
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        border: 1px solid #ddd; /* Add border around the entire table */
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #27ae60;
+    }
+</style>
+
+<!-- Container div for the menu table -->
+<p align="center"><a href="{% url 'add_recipe_requirement' %}">Add a recipe Requirement</a></p>
+<div class="menu-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Ingredients</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in menu_items %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.full_price }}</td>
+                    <td>{{ item.required_ingredients.all|join:", "}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
