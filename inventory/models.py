@@ -64,7 +64,7 @@ class RecipeRequirementModel(models.Model):
         return f"Menu Item : {self.menu_item.__str__} Ingredients : {self.ingredients.name} Quantity : {self.quantity}"
     
     def recipe(self):
-        return f"{self.ingredients.name} : {self.quantity}"
+        return f"{self.ingredients.name} : {self.quantity} {self.ingredients.unit}"
     
 class PurchaseModel(models.Model):
     

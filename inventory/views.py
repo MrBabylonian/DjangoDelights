@@ -26,3 +26,13 @@ class AddRecipeRequirement(CreateView):
     form_class = AddRecipeRequirementForm
     template_name = "inventory/add_recipe_requirement.html"
     success_url = '/menu/'
+    
+class RecipeList(TemplateView):
+    template_name = "inventory/recipe_list.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["menu"] = MenuItemModel.objects.all()
+        context["recipe"] = RecipeRequirementModel.objects.all()
+        return context
+    

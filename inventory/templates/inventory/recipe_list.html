@@ -1,0 +1,46 @@
+{% extends "inventory/base.html" %}
+{% load static %}
+
+{% block content %}
+    <h2 align="center">Recipes</h2>
+
+    <style>
+        /* Container styling */
+        .menu-item-container {
+            width: 45%;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd; /* Add border around the box */
+            background-color: #f2f2f2; /* Light gray background */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow */
+            margin-bottom: 20px; /* Add margin between boxes */
+        }
+
+        .recipe-requirements {
+            margin-top: 10px;
+        }
+
+        .ingredient {
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            padding: 8px;
+            background-color: #27ae60;
+            color: #fff;
+        }
+    </style>
+
+    {% for menu_item in menu %}
+        <div class="menu-item-container">
+            <h3>{{ menu_item.name }}</h3>
+            <p>Sale Price : {{ menu_item.full_price }}</p>
+            <div class="recipe-requirements">
+                <div class="ingredient">
+                    {% for recipe in menu_item.reciperequirementmodel_set.all %}
+                        <p>{{ recipe.recipe }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}
