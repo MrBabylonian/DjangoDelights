@@ -1,7 +1,7 @@
 {% extends "inventory/base.html" %}
 {% load static %}
 
-{%block content%}
+{% block content %}
     <style>
         /* Individual styling for the form */
         .form-container {
@@ -38,13 +38,15 @@
             background-color: #218c53; /* Darker green for hover effect */
         }
     </style>
-
-    <h2 align="center">Update the Recipe</h2>
+    
+    <h2 align ="center"></h2>
     <div class="form-container">
-        <form method="POST" class="update-menu-item-form">
+        
+        <form method="POST" class="inventory_re-stocking_form">
             {% csrf_token %}
             {{ form.as_p }}
-        <input align="center" type="submit" value="Update" class="submit-button">
+            <input align="center" type="submit" value="Add Stock" class="submit-button">
+
         </form>
     </div>
 {% endblock %}

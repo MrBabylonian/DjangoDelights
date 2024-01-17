@@ -8,8 +8,8 @@ class IngredientModel(models.Model):
     
     name = models.CharField(max_length=50, unique=True)
     unit = models.CharField(max_length=50)
-    available_stock = models.FloatField(max_length=50)
-    price_per_unit = models.FloatField(max_length=10, default="€")
+    available_stock = models.FloatField(default=0)
+    price_per_unit = models.FloatField(default=0)
     
     class Meta:
         
