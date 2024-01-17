@@ -1,7 +1,7 @@
 {% extends "inventory/base.html" %}
 {% load static %}
 
-{% block content %}
+{%block content%}
     <style>
         /* Individual styling for the form */
         .form-container {
@@ -39,12 +39,12 @@
         }
     </style>
 
-    <h2 align="center">Add Recipe Requirement for an Item in the Menu</h2>
+    <h2 align="center">Update the Product</h2>
     <div class="form-container">
-        <form method="POST" class="recipe-requirement-form">
+        <form method="POST" class="update-Product-form">
             {% csrf_token %}
             {{ form.as_p }}
-            <input align="center" type="submit" value="Add to Recipe" class="submit-button">
+        <input align="center" type="submit" value="Update" class="submit-button">
         </form>
     </div>
 {% endblock %}

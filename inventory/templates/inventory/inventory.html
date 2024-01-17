@@ -1,7 +1,7 @@
 {% extends "inventory/base.html" %}
 {% load static %}
 {% block content %}
-<h2 align="center">Menu Items</h2>
+<h2 align="center">Current Stock</h2>
 <style>
     /* Container styling */
     .menu-container {
@@ -29,23 +29,23 @@
     }
 </style>
 
-<!-- Container div for the menu table -->
-<p align="center"><a href="{% url 'add_an_item' %}">Add an Item</a></p>
+<!-- Container div for the inventory table -->  
+<p align="center"><a href="{% url 'add_new_product' %}">Add New Product</a></p>
 <div class="menu-container">
     <table>
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Price</th>
-                <th>Ingredients</th>
+                <th>Stock</th>
+                <th>Price per Unit</th>
             </tr>
         </thead>
         <tbody>
-            {% for item in menu_items %}
+            {% for ingredient in object_list %}
                 <tr>
-                    <td><a href="{% url 'update_menu_item' item.name %}">{{ item.name }}</a></td>
-                    <td>{{ item.full_price }}</td>
-                    <td>{{ item.ingredients.all|join:", "}}</td>
+                    <td><a href="{% url 'update_product' pk=ingredient.pk %}">{{ ingredient.name }}</a></td>
+                    <td>{{ ingredient.stock_unit }}</td>
+                    <td>{{ ingredient.full_price}}</td>
                 </tr>
             {% endfor %}
         </tbody>

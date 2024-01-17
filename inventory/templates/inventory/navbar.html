@@ -51,6 +51,7 @@
         <a href="{% url 'home' %}" {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %}>Home</a>
         <a href="{% url 'menu' %}" {% if request.resolver_match.url_name == 'menu' %}class="active"{% endif %}>Menu</a>
         <a href="{% url 'recipe_list' %}" {% if request.resolver_match.url_name == 'recipe_list' %}class="active"{% endif %}>Recipes</a>
+        <a href="{% url 'inventory' %}"  {% if request.resolver_match.url_name == 'inventory' %}class="active"{% endif %}>Inventory</a>
         <a href="#">Sale</a>
         <a href="#">Reports</a>
     </nav>
