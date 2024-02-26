@@ -40,15 +40,28 @@
         .cancel-button:hover {
             background-color: #218c53; /* Darker green for hover effect */
         }
+
+        .error-message {
+            color: red;
+            font-weight: bold;
+        }
     </style>
 
-    <h2 align="center">Add an Item to Menu</h2>
+    <h2 align="center">Register a New Sale</h2>
     <div class="form-container">
-        <form method="POST" class="add-menu-item-form">
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'error' %}
+                    <div class="error-message">
+                        {{ message }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <form method="POST" class="add-new-sale-form">
             {% csrf_token %}
             {{ form.as_p }}
-            <p>Hold 'ctrl' button to choose multiple ingredients</p>
-            <input type="submit" value="Add to Menu" class="submit-button">
+            <input type="submit" value="Register the sale" class="submit-button">
             <input type="button" value="Cancel" class="cancel-button" onclick="window.history.back();">
         </form>
     </div>

@@ -3,7 +3,7 @@
 
 {% block content %}
     <style>
-        /* Individual styling for the form */
+        /* Styling for the login form */
         .form-container {
             width: 50%;
             margin: 20px auto;
@@ -13,20 +13,21 @@
             text-align: center; /* Center-align the form */
         }
 
-        .recipe-requirement-form {
-            display: inline-block; /* Keep the form inline within the container */
+        .login-form {
             text-align: left; /* Align form elements to the left */
         }
 
-        .recipe-requirement-form input[type="text"],
-        .recipe-requirement-form textarea {
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
             width: 100%;
             padding: 10px;
             margin: 8px 0;
             box-sizing: border-box;
         }
 
+        /* Center-align the buttons */
         .submit-button,
+        .signup-button,
         .cancel-button {
             background-color: #27ae60;
             color: #fff;
@@ -37,19 +38,33 @@
         }
 
         .submit-button:hover,
+        .signup-button:hover,
         .cancel-button:hover {
             background-color: #218c53; /* Darker green for hover effect */
         }
+
+        /* Center-align buttons within the form container */
+        .button-container {
+            text-align: center;
+        }
+
+        /* Adjust size of signup button */
+        .signup-button {
+            width: 100%;
+        }
     </style>
 
-    <h2 align="center">Add an Item to Menu</h2>
+    <h2 align="center">Login</h2>
     <div class="form-container">
-        <form method="POST" class="add-menu-item-form">
+        <form method="post" class="login-form">
             {% csrf_token %}
             {{ form.as_p }}
-            <p>Hold 'ctrl' button to choose multiple ingredients</p>
-            <input type="submit" value="Add to Menu" class="submit-button">
-            <input type="button" value="Cancel" class="cancel-button" onclick="window.history.back();">
+            <div class="button-container">
+                <button type="submit" class="submit-button">Login</button>
+                <a href="{% url 'signup' %}" class="signup-button">Sign Up</a>
+                <button type="button" class="cancel-button" onclick="window.history.back();">Cancel</button>
+                
+            </div>
         </form>
     </div>
 {% endblock %}

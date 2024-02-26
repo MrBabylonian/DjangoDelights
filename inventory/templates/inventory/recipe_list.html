@@ -31,14 +31,13 @@
 
     <p align="center"><a href="{% url 'add_recipe_requirement' %}">Add a recipe Requirement</a></p>
 
-    {% for menu_item in menu %}
-        <div class="menu-item-container">
-            <h3>{{ menu_item }}</h3>
-            <p>Sale Price : {{ menu_item.full_price }}</p>
+    {% for item in menu_items %}
+        <div class="recipe-requirement-container">
+            <h3>{{ item }}</h3>
             <div class="recipe-requirements">
                 <div class="ingredient">
-                    {% for recipe in menu_item.reciperequirementmodel_set.all %}
-                        <p>{{ recipe.recipe }}</p>
+                    {% for recipe in item.reciperequirementmodel_set.all %}
+                        <p><a href="{% url 'update_recipe_requirement' pk=recipe.id%}">{{ recipe.recipe }} Cost: {{ recipe.cost_per_ingredient }} €</a></p> 
                     {% endfor %}
                 </div>
             </div>
@@ -46,3 +45,4 @@
     {% endfor %}
 
 {% endblock %}
+ 

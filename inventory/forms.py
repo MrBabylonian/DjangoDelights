@@ -1,17 +1,26 @@
 from django import forms
 from .models import *
+from .views import *
 
 class RecipeRequirementForm(forms.ModelForm):
     class Meta:
         model = RecipeRequirementModel
         fields = "__all__"
         
+class UpdateRecipeRequirementForm(forms.ModelForm):
+    class Meta:
+        model = RecipeRequirementModel
+        fields = ['quantity']
+
+
 
 class MenuItemForm(forms.ModelForm):
     class Meta:
         model = MenuItemModel
         fields = "__all__"
         
+
+
 
 class InventoryForm(forms.ModelForm):
     class Meta:
@@ -27,3 +36,13 @@ class AddStockToInventoryForm(forms.ModelForm):
     add_stock = forms.FloatField(min_value = 0)
     available_stock = forms.FloatField(widget=forms.HiddenInput(), required=False)
     
+
+
+
+
+class SaleForm(forms.ModelForm):
+    class Meta:
+        model = PurchaseModel
+        fields = ['menu_item']
+        
+    menu_item = forms.ModelChoiceField(queryset=MenuItemModel.objects.all())

@@ -38,14 +38,19 @@
                 <th>Name</th>
                 <th>Price</th>
                 <th>Ingredients</th>
+                <th>Production Cost</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
             {% for item in menu_items %}
                 <tr>
+
                     <td><a href="{% url 'update_menu_item' item.name %}">{{ item.name }}</a></td>
                     <td>{{ item.full_price }}</td>
                     <td>{{ item.ingredients.all|join:", "}}</td>
+                    <td>{{ item.production_cost_per_menu_item }} €</td>
+                    <td><a href="{% url 'delete_menu_item' item.name %}">Delete the Item</a></td>
                 </tr>
             {% endfor %}
         </tbody>

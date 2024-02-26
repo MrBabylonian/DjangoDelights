@@ -37,6 +37,35 @@
             color: #ffffff; /* Active text color */
         }
 
+        .logout-container {
+            float: right; /* Align to the right */
+            margin-right: 0; /* Ensure no space between logout button and right end side */
+        }
+
+        .logout-button {
+            background-color: #c0392b; /* Red background color */
+            color: #ffffff; /* Text color */
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .logout-button:hover {
+            background-color: #a93226; /* Darker red on hover */
+        }
+
+        /* Centering styles for other buttons */
+        .centered-button {
+            margin: 0 auto;
+        }
+
+        /* Ensure other buttons are not affected by the logout button style */
+        nav a:not(.logout-button):not(.centered-button) {
+            transition: none; /* Remove transition effect */
+        }
+
         @media screen and (max-width: 600px) {
             nav a {
                 display: block;
@@ -48,12 +77,19 @@
 <body>
 
     <nav>
-        <a href="{% url 'home' %}" {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %}>Home</a>
-        <a href="{% url 'menu' %}" {% if request.resolver_match.url_name == 'menu' %}class="active"{% endif %}>Menu</a>
-        <a href="{% url 'recipe_list' %}" {% if request.resolver_match.url_name == 'recipe_list' %}class="active"{% endif %}>Recipes</a>
-        <a href="{% url 'inventory' %}"  {% if request.resolver_match.url_name == 'inventory' %}class="active"{% endif %}>Inventory</a>
-        <a href="#">Sale</a>
-        <a href="#">Reports</a>
+        <a href="{% url 'home' %}" {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %} class="centered-button">Home</a>
+        <a href="{% url 'menu' %}" {% if request.resolver_match.url_name == 'menu' %}class="active"{% endif %} class="centered-button">Menu</a>
+        <a href="{% url 'recipe_list' %}" {% if request.resolver_match.url_name == 'recipe_list' %}class="active"{% endif %} class="centered-button">Recipes</a>
+        <a href="{% url 'inventory' %}"  {% if request.resolver_match.url_name == 'inventory' %}class="active"{% endif %} class="centered-button">Inventory</a>
+        <a href="{% url 'sale_list' %}"  {% if request.resolver_match.url_name == 'sale_list' %}class="active"{% endif %} class="centered-button">Sales</a>
+        {% if user.is_authenticated %}
+        <div class="logout-container">
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="logout-button">Logout</button>
+            </form>
+        </div>
+        {% endif %}
     </nav>
 
     <!-- Your content goes here -->

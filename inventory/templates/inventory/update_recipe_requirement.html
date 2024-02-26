@@ -42,13 +42,13 @@
         }
     </style>
 
-    <h2 align="center">Add an Item to Menu</h2>
+    <h2 align="center">Update the recipe requirement</h2>
     <div class="form-container">
-        <form method="POST" class="add-menu-item-form">
+        <form method="POST" class="update-recipe-form">
+            <p>You are updating {{ object }}</p>
             {% csrf_token %}
             {{ form.as_p }}
-            <p>Hold 'ctrl' button to choose multiple ingredients</p>
-            <input type="submit" value="Add to Menu" class="submit-button">
+            <input type="submit" value="Update" class="submit-button">
             <input type="button" value="Cancel" class="cancel-button" onclick="window.history.back();">
         </form>
     </div>

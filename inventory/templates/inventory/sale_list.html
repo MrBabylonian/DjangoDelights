@@ -1,0 +1,68 @@
+{% extends "inventory/base.html" %}
+{% load static %}
+{% block content %}
+<h2 align="center">Sales History</h2>
+{% for sale in sales|slice:"1" %}
+<h3 align="center">
+    Total Revenue:{{ sale.total_revenue }} €
+    Total Cost: {{ sale.total_cost }} €
+    Total Profit: {{ sale.total_profit }} €
+</h3>
+{% endfor %}
+
+<style>
+    /* Container styling */
+    .menu-container {
+        width: 45%;
+        margin: 20px auto;
+        padding: 0px;
+
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        border: 1px solid #ddd; /* Add border around the entire table */
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #27ae60;
+    }
+</style>
+<!-- Container div for the sale table -->
+<p align="center"><a href="{% url  'new_sale' %}">New Sale</a></p>
+<div class="sales-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Sold Item</th>
+                <th>Price</th>
+                <th>Production Cost</th>
+                <th>Profit</th>
+                <th>Date</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sold in sales %}
+                <tr>
+
+                    <td>{{ sold.menu_item.name }}</td>
+                    <td>{{ sold.menu_item.full_price }}</td>
+                    <td>{{ sold.menu_item.production_cost_per_menu_item }} €</td>
+                    <td>{{ sold.menu_item.profit_per_menu_item }} €</td>
+                    <td>{{ sold.timestamp }}</td> 
+                    <td><a href="{% url 'delete_sale' pk=sold.id%}">Delete the Sale</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

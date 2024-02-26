@@ -1,7 +1,7 @@
 {% extends "inventory/base.html" %}
 {% load static %}
 
-{% block content %}
+{%block content%}
     <style>
         /* Individual styling for the form */
         .form-container {
@@ -26,8 +26,7 @@
             box-sizing: border-box;
         }
 
-        .submit-button,
-        .cancel-button {
+        .update-button, .cancel-button {
             background-color: #27ae60;
             color: #fff;
             padding: 10px 20px;
@@ -36,20 +35,19 @@
             margin: 5px; /* Add some margin between the buttons */
         }
 
-        .submit-button:hover,
-        .cancel-button:hover {
+        .submit-button:hover, .cancel-button:hover {
             background-color: #218c53; /* Darker green for hover effect */
         }
     </style>
 
-    <h2 align="center">Add an Item to Menu</h2>
+    <h2 align="center">You are deleting an ingredient</h2>
     <div class="form-container">
-        <form method="POST" class="add-menu-item-form">
+        <form method="POST" class="delete-ingredient-form">
+            <p>Are you sure you want to delete "{{ object }}" ?</p>
             {% csrf_token %}
             {{ form.as_p }}
-            <p>Hold 'ctrl' button to choose multiple ingredients</p>
-            <input type="submit" value="Add to Menu" class="submit-button">
-            <input type="button" value="Cancel" class="cancel-button" onclick="window.history.back();">
+            <input align="center" type="submit" value="Delete" class="update-button">
+            <input align="center" type="button" value="Cancel" class="cancel-button" onclick="window.history.back();">
         </form>
     </div>
 {% endblock %}
