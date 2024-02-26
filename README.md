@@ -1,3 +1,5 @@
+Note: It's worth mentioning that the developer had no prior experience when building this version of Django Delights.
+
 ### Project Overview
 
 **"Django Delights"** represents the culminating project in the **"Build Python Apps with Django"** skill path offered by Codecademy.com. The project entails the creation of a comprehensive inventory management and sales tracking system, designed to streamline restaurant operations for managerial staff. This hands-on experience provides practical application of the skills acquired throughout the course.
